@@ -30,6 +30,18 @@ I am so lazy to add description, sorry :smile: :scream:
 Please anyone if you have time add description  :joy: see [sample][1] here 
 [1]: https://github.com/armcha/Meet-My-App/tree/master/app/src/main
 
+Set your activity style ```android:theme="@style/MeetMyAppStyle"```
+```xml
+   <activity
+            android:name=".MainActivity"
+            android:theme="@style/MeetMyAppStyle">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+```
+
 ```java
 public class MainActivity extends BaseIntroActivity{
 
