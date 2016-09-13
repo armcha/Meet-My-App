@@ -10,24 +10,23 @@ import android.view.ViewGroup;
 
 public class IntroFragment extends Fragment {
 
-    private static final String ARG_LAYOUT_RES_ID = "layoutResId";
+    private static final String LAYOUT_ID = "layoutId";
 
     private int layoutResId;
 
     public static IntroFragment newInstance(int layoutResId) {
         IntroFragment introFragment = new IntroFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_LAYOUT_RES_ID, layoutResId);
+        args.putInt(LAYOUT_ID, layoutResId);
         introFragment.setArguments(args);
-
         return introFragment;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null && getArguments().containsKey(ARG_LAYOUT_RES_ID))
-            layoutResId = getArguments().getInt(ARG_LAYOUT_RES_ID);
+        if (getArguments() != null && getArguments().containsKey(LAYOUT_ID))
+            layoutResId = getArguments().getInt(LAYOUT_ID);
     }
 
     @Nullable

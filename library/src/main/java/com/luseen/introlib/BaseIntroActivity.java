@@ -6,7 +6,6 @@ import android.graphics.PorterDuff;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.support.annotation.ColorInt;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -68,6 +67,8 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
     private boolean isVibrateOn = false;
 
     private boolean isSkipShown = true;
+
+    private boolean isParallaxEnabled = false;
 
 
     @Override
@@ -162,7 +163,8 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
         mPagerAdapter = new PagerAdapter(super.getSupportFragmentManager(), fragments);
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         viewPager.setAdapter(this.mPagerAdapter);
-        viewPager.setPageTransformer(false,new ParallaxPageTransformer());
+        if (isParallaxEnabled)
+            viewPager.setPageTransformer(false, new ParallaxPageTransformer());
         viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
@@ -245,9 +247,9 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
 
     public abstract void onDonePressed();
 
-    public void addFragment(@NonNull Fragment fragment, @ColorInt int backgroundColor) {
-        fragments.add(fragment);
-        backgroundColors.add(backgroundColor);
+    public void addFragment(@NonNull FragmentItem slideItem) {
+        fragments.add(slideItem.getFragment());
+        backgroundColors.add(slideItem.getBackgroundColor());
         mPagerAdapter.notifyDataSetChanged();
     }
 
@@ -279,5 +281,9 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
 
     public void setDoneText(String doneText) {
         doneTextView.setText(doneText);
+    }
+
+    public void setParallaxEnabled(boolean parallaxEnabled) {
+        isParallaxEnabled = parallaxEnabled;
     }
 }

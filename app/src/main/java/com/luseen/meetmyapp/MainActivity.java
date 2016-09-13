@@ -7,17 +7,17 @@ import android.widget.Toast;
 
 import com.luseen.introlib.BaseIntroActivity;
 import com.luseen.introlib.IntroFragment;
+import com.luseen.introlib.FragmentItem;
 
 public class MainActivity extends BaseIntroActivity {
 
     @Override
     public void init(@Nullable Bundle savedInstanceState) {
 
-        addFragment(IntroFragment.newInstance(R.layout.first_layout), ContextCompat.getColor(this, R.color.color1));
-        addFragment(IntroFragment.newInstance(R.layout.second_layout), ContextCompat.getColor(this, R.color.color2));
-        addFragment(IntroFragment.newInstance(R.layout.first_layout), ContextCompat.getColor(this, R.color.color3));
-        addFragment(IntroFragment.newInstance(R.layout.four_layout), ContextCompat.getColor(this, R.color.color4));
-        addFragment(IntroFragment.newInstance(R.layout.second_layout), ContextCompat.getColor(this, R.color.color5));
+        addFragment(new FragmentItem(IntroFragment.newInstance(R.layout.first_layout), ContextCompat.getColor(this, R.color.color1)));
+        addFragment(new FragmentItem(IntroFragment.newInstance(R.layout.second_layout), ContextCompat.getColor(this, R.color.color2)));
+        addFragment(new FragmentItem(IntroFragment.newInstance(R.layout.first_layout), ContextCompat.getColor(this, R.color.color3)));
+        addFragment(new FragmentItem(IntroFragment.newInstance(R.layout.four_layout), ContextCompat.getColor(this, R.color.color4)));
 
         setVibrate(true);
         setNextImage(R.drawable.next_icon);
