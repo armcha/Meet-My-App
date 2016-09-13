@@ -40,4 +40,6 @@ public class MainActivity extends BaseIntroActivity{
 }
 ```
 
+Your layout should not contain background attribute
+
 
