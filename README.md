@@ -27,7 +27,8 @@ Maven:
 
 I am so lazy to add description, sorry :smile: :scream:
 
-Please anyone if you have time add description  :joy:
+Please anyone if you have time add description  :joy: see [saple][1] here 
+[1]: https://github.com/armcha/Meet-My-App/tree/master/app/src/main
 
 ```java
 public class MainActivity extends BaseIntroActivity{
