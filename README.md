@@ -6,7 +6,7 @@
 ![](screens/screen2.png)
 ![](screens/gif1.gif)
 
-
+![](screens/beta.png)
 #Installation
 -----------------------
 
@@ -26,3 +26,17 @@ Maven:
 ```
 
 I am so lazy to add description, sorry :smile: :scream:
+
+Please anyone if you have time add description  :joy:
+
+```java
+public class MainActivity extends BaseIntroActivity{
+
+ @Override
+    public void init(@Nullable Bundle savedInstanceState) {
+        addFragment(new FragmentItem(R.layout.your_layout, ContextCompat.getColor(this, R.color.yourColor)));
+    }
+}
+```
+
+
