@@ -32,7 +32,7 @@ dependencies {
 publish {
     groupId = 'com.github.armcha'
     artifactId = 'MeetMyApp'
-    publishVersion = '0.3.0'
+    publishVersion = '0.3.1'
     desc = 'Simple app intro'
     licences = ['MIT']
     website = 'https://github.com/armcha/Meet-My-App'

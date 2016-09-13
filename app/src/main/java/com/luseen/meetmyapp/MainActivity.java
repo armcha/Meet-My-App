@@ -6,7 +6,6 @@ import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
 import com.luseen.introlib.BaseIntroActivity;
-import com.luseen.introlib.IntroFragment;
 import com.luseen.introlib.FragmentItem;
 
 public class MainActivity extends BaseIntroActivity {
@@ -14,9 +13,8 @@ public class MainActivity extends BaseIntroActivity {
     @Override
     public void init(@Nullable Bundle savedInstanceState) {
 
-        FragmentItem fragmentItem = new FragmentItem(R.layout.intro_second,ContextCompat.getColor(this, R.color.introSecondColor));
         addFragment(new FragmentItem(R.layout.intro_first, ContextCompat.getColor(this, R.color.introFirstColor)));
-        addFragment(fragmentItem);
+        addFragment(new FragmentItem(R.layout.intro_second, ContextCompat.getColor(this, R.color.introSecondColor)));
         addFragment(new FragmentItem(R.layout.intro_third, ContextCompat.getColor(this, R.color.introThirdColor)));
         addFragment(new FragmentItem(R.layout.intro_fourth, ContextCompat.getColor(this, R.color.introFourthColor)));
 

@@ -12,7 +12,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -34,6 +33,10 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
     private final float SELECTED_SCALE = 1.3f;
 
     private final float UN_SELECTED_SCALE = 0.9f;
+
+    private final String SKIP_TEXT = "SKIP";
+
+    private final String DONE_TEXT = "DONE";
 
     private PagerAdapter mPagerAdapter;
 
@@ -86,12 +89,7 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
 
         addDots(fragments.size());
 
-        Utils.setUpRecentAppStyle(this, backgroundColors.get(0));
-
-        if (fragments.size() == 1) {
-            Utils.hideView(nextImageView, skipTextView);
-            Utils.showView(doneTextView);
-        }
+        setUpUiComponents();
     }
 
     @Override
@@ -106,6 +104,23 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
             return false;
         }
         return super.onKeyDown(code, keyEvent);
+    }
+
+    private void setUpUiComponents() {
+        Utils.setUpRecentAppStyle(this, backgroundColors.get(0));
+
+        if (fragments.size() == 1) {
+            Utils.hideView(nextImageView, skipTextView);
+            Utils.showView(doneTextView);
+        }
+
+        if (skipTextView.getText().toString().isEmpty()) {
+            skipTextView.setText(SKIP_TEXT);
+        }
+
+        if (doneTextView.getText().toString().isEmpty()) {
+            doneTextView.setText(DONE_TEXT);
+        }
     }
 
     private void initColors() {
@@ -250,7 +265,6 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
     public void addFragment(@NonNull FragmentItem fragmentItem) {
         fragments.add(IntroFragment.newInstance(fragmentItem.getFragmentLayout()));
         backgroundColors.add(fragmentItem.getBackgroundColor());
-        //mPagerAdapter.notifyDataSetChanged();
     }
 
     public void showSkipButton(boolean showButton) {
@@ -270,12 +284,10 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
     }
 
     public void setSkipText(String skipText) {
-        Utils.showView(skipTextView);
         skipTextView.setText(skipText);
     }
 
     public void setNextImage(int nextImage) {
-        Utils.showView(nextImageView);
         nextImageView.setImageResource(nextImage);
     }
 

@@ -2,7 +2,6 @@ package com.luseen.introlib;
 
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
@@ -60,7 +59,6 @@ class Utils {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     static int getNavBarWidth(Context context) {
         Resources resources = context.getResources();
         int resourceId = resources.getIdentifier("navigation_bar_height", "dimen", "android");
@@ -102,17 +100,18 @@ class Utils {
         imageTintChangeAnimation.start();
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     static void setUpRecentAppStyle(Activity activity, int targetColor) {
-        try {
-            Drawable appIcon = activity.getPackageManager().getApplicationIcon(activity.getPackageName());
-            Bitmap bm = ((BitmapDrawable) appIcon).getBitmap();
-            ActivityManager.TaskDescription taskDescription =
-                    new ActivityManager.TaskDescription(
-                            activity.getString(R.string.app_name), bm, targetColor);
-            activity.setTaskDescription(taskDescription);
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            try {
+                Drawable appIcon = activity.getPackageManager().getApplicationIcon(activity.getPackageName());
+                Bitmap bm = ((BitmapDrawable) appIcon).getBitmap();
+                ActivityManager.TaskDescription taskDescription =
+                        new ActivityManager.TaskDescription(
+                                activity.getString(R.string.app_name), bm, targetColor);
+                activity.setTaskDescription(taskDescription);
+            } catch (PackageManager.NameNotFoundException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
