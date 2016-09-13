@@ -12,7 +12,7 @@
         android:layout_marginLeft="@dimen/intro_margin"
         android:layout_marginRight="@dimen/intro_margin"
         android:layout_weight=".55"
-        app:srcCompat="@drawable/intro_second_vector" />
+        app:srcCompat="@drawable/two" />
 
     <LinearLayout
         android:layout_width="match_parent"

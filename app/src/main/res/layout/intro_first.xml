@@ -12,7 +12,7 @@
         android:layout_weight=".55"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
-        android:src="@drawable/intro_first" />
+        app:srcCompat="@drawable/one" />
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -9,11 +9,11 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/intro_margin"
-        android:layout_marginRight="@dimen/intro_margin"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
         android:layout_marginTop="10dp"
         android:layout_weight=".55"
-        app:srcCompat="@drawable/intro_third_vector" />
+        app:srcCompat="@drawable/three" />
 
     <LinearLayout
         android:layout_width="match_parent"
