@@ -14,10 +14,11 @@ public class MainActivity extends BaseIntroActivity {
     @Override
     public void init(@Nullable Bundle savedInstanceState) {
 
-        addFragment(new FragmentItem(IntroFragment.newInstance(R.layout.first_layout), ContextCompat.getColor(this, R.color.color1)));
-        addFragment(new FragmentItem(IntroFragment.newInstance(R.layout.second_layout), ContextCompat.getColor(this, R.color.color2)));
-        addFragment(new FragmentItem(IntroFragment.newInstance(R.layout.first_layout), ContextCompat.getColor(this, R.color.color3)));
-        addFragment(new FragmentItem(IntroFragment.newInstance(R.layout.four_layout), ContextCompat.getColor(this, R.color.color4)));
+        FragmentItem fragmentItem = new FragmentItem(R.layout.intro_second,ContextCompat.getColor(this, R.color.introSecondColor));
+        addFragment(new FragmentItem(R.layout.intro_first, ContextCompat.getColor(this, R.color.introFirstColor)));
+        addFragment(fragmentItem);
+        addFragment(new FragmentItem(R.layout.intro_third, ContextCompat.getColor(this, R.color.introThirdColor)));
+        addFragment(new FragmentItem(R.layout.intro_fourth, ContextCompat.getColor(this, R.color.introFourthColor)));
 
         setVibrate(true);
         setNextImage(R.drawable.next_icon);

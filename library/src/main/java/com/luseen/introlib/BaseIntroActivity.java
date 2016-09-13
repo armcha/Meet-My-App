@@ -12,6 +12,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
@@ -60,8 +61,6 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
 
     private int unSelectedDotColor;
 
-    private int slidesNumber;
-
     private int vibrateIntensity = 20;
 
     private boolean isVibrateOn = false;
@@ -81,15 +80,15 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
 
         setUpViews();
 
-        setUpViewPager();
-
         init(savedInstanceState);
 
-        slidesNumber = fragments.size();
+        setUpViewPager();
 
-        addDots(slidesNumber);
+        addDots(fragments.size());
 
-        if (slidesNumber == 1) {
+        Utils.setUpRecentAppStyle(this, backgroundColors.get(0));
+
+        if (fragments.size() == 1) {
             Utils.hideView(nextImageView, skipTextView);
             Utils.showView(doneTextView);
         }
@@ -144,7 +143,7 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
                 if (isVibrateOn) {
                     mVibrator.vibrate(vibrateIntensity);
                 }
-                viewPager.setCurrentItem(slidesNumber);
+                viewPager.setCurrentItem(fragments.size());
             }
         });
 
@@ -168,7 +167,8 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
         viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
-                if (position == slidesNumber - 1) {
+                Utils.setUpRecentAppStyle(BaseIntroActivity.this, backgroundColors.get(position));
+                if (position == fragments.size() - 1) {
                     Utils.hideView(skipTextView, nextImageView);
                     Utils.showView(doneTextView);
                 } else {
@@ -247,10 +247,10 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
 
     public abstract void onDonePressed();
 
-    public void addFragment(@NonNull FragmentItem slideItem) {
-        fragments.add(slideItem.getFragment());
-        backgroundColors.add(slideItem.getBackgroundColor());
-        mPagerAdapter.notifyDataSetChanged();
+    public void addFragment(@NonNull FragmentItem fragmentItem) {
+        fragments.add(IntroFragment.newInstance(fragmentItem.getFragmentLayout()));
+        backgroundColors.add(fragmentItem.getBackgroundColor());
+        //mPagerAdapter.notifyDataSetChanged();
     }
 
     public void showSkipButton(boolean showButton) {

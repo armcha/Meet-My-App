@@ -1,6 +1,7 @@
 package com.luseen.introlib;
 
 import android.support.annotation.ColorInt;
+import android.support.annotation.IntegerRes;
 import android.support.v4.app.Fragment;
 
 /**
@@ -9,19 +10,20 @@ import android.support.v4.app.Fragment;
 
 public class FragmentItem {
 
-    private Fragment fragment;
+    @IntegerRes
+    private int fragmentLayout;
 
     @ColorInt
     private int backgroundColor;
 
 
-    public FragmentItem(Fragment fragment, @ColorInt int backgroundColor) {
-        this.fragment = fragment;
+    public FragmentItem(int fragmentLayout, @ColorInt int backgroundColor) {
+        this.fragmentLayout = fragmentLayout;
         this.backgroundColor = backgroundColor;
     }
 
-    public Fragment getFragment() {
-        return fragment;
+    public int getFragmentLayout() {
+        return fragmentLayout;
     }
 
     public int getBackgroundColor() {

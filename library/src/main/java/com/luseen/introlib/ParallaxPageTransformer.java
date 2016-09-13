@@ -16,7 +16,7 @@ class ParallaxPageTransformer implements ViewPager.PageTransformer {
             for (int i = 0; i < ((ViewGroup) view).getChildCount(); i++) {
                 if (position > -1 && position < 1) {
                     float childWidth = ((ViewGroup) view).getChildAt(i).getWidth();
-                    ((ViewGroup) view).getChildAt(i).setTranslationX(-(position * childWidth * 0.5f));
+                    ((ViewGroup) view).getChildAt(i).setTranslationX(-(position * childWidth * 1.5f));
                 }
             }
         }

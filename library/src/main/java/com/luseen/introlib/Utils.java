@@ -3,13 +3,18 @@ package com.luseen.introlib;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.ActivityManager;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.graphics.PorterDuff;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorListenerAdapter;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -95,5 +100,19 @@ class Utils {
         });
         imageTintChangeAnimation.setDuration(DEFAULT_ANIMATION_DURATION);
         imageTintChangeAnimation.start();
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    static void setUpRecentAppStyle(Activity activity, int targetColor) {
+        try {
+            Drawable appIcon = activity.getPackageManager().getApplicationIcon(activity.getPackageName());
+            Bitmap bm = ((BitmapDrawable) appIcon).getBitmap();
+            ActivityManager.TaskDescription taskDescription =
+                    new ActivityManager.TaskDescription(
+                            activity.getString(R.string.app_name), bm, targetColor);
+            activity.setTaskDescription(taskDescription);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
