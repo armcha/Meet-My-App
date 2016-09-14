@@ -38,6 +38,8 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
 
     private final String DONE_TEXT = "DONE";
 
+    private FragmentChangeListener fragmentChangeListener;
+
     private PagerAdapter mPagerAdapter;
 
     private ViewPager viewPager;
@@ -187,14 +189,22 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
                     Utils.hideView(skipTextView, nextImageView);
                     Utils.showView(doneTextView);
                 } else {
-                    Utils.showView(skipTextView, nextImageView);
+                    if (isSkipShown) {
+                        Utils.showView(skipTextView);
+                    }
+                    Utils.showView(nextImageView);
                     Utils.hideView(doneTextView);
                 }
-                if (!isSkipShown) {
+                if (isSkipShown) {
                     Utils.showView(skipTextView);
+                } else {
+                    Utils.hideView(skipTextView);
                 }
 
                 selectDot(position);
+
+                if (fragmentChangeListener != null)
+                    fragmentChangeListener.onSlideChange(position);
             }
 
             @Override
@@ -254,7 +264,6 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
                 Utils.changeImageViewTintWithAnimation(currentDot, selectedDotColor, unSelectedDotColor);
             }
         }
-
         currentSelectedItem = index;
     }
 
@@ -269,10 +278,12 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
 
     public void showSkipButton(boolean showButton) {
         this.isSkipShown = showButton;
-        if (!showButton) {
-            TextView skip = (TextView) findViewById(R.id.skip);
-            skip.setVisibility(View.INVISIBLE);
+        if (showButton) {
+            skipTextView.setVisibility(View.VISIBLE);
+        } else {
+            skipTextView.setVisibility(View.GONE);
         }
+        skipTextView.postInvalidate();
     }
 
     public void setVibrate(boolean vibrate) {
@@ -297,5 +308,9 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
 
     public void setParallaxEnabled(boolean parallaxEnabled) {
         isParallaxEnabled = parallaxEnabled;
+    }
+
+    public void setFragmentChangeListener(FragmentChangeListener fragmentChangeListener) {
+        this.fragmentChangeListener = fragmentChangeListener;
     }
 }
