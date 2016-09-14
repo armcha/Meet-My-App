@@ -13,14 +13,14 @@
 
 Gradle:
 ```groovy
-compile 'com.github.armcha:MeetMyApp:0.3.1'
+compile 'com.github.armcha:MeetMyApp:0.3.2'
 ```
 Maven:
 ```xml
 <dependency>
   <groupId>com.github.armcha</groupId>
   <artifactId>MeetMyApp</artifactId>
-  <version>0.3.1</version>
+  <version>0.3.2</version>
   <type>pom</type>
 </dependency>
 ```
@@ -48,6 +48,13 @@ public class MainActivity extends BaseIntroActivity{
  @Override
     public void init(@Nullable Bundle savedInstanceState) {
         addFragment(new FragmentItem(R.layout.your_layout, ContextCompat.getColor(this, R.color.yourColor)));
+
+        //Options, intro will also work without this options
+        setVibrate(true);
+        setNextImage(R.drawable.next_icon);
+        setSkipText("SKIP");
+        setDoneText("DONE");
+        showSkipButton(true);
     }
 }
 ```
