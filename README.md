@@ -27,7 +27,7 @@ Maven:
 
 I'm too lazy to add description :smile: :scream:
 
-If anyone has free time to add description, please add it. joy: see [sample][1] here 
+If anyone has free time to add description, please add it. :joy: see [sample][1] here 
 [1]: https://github.com/armcha/Meet-My-App/tree/master/app/src/main
 
 Set your activity style ```android:theme="@style/MeetMyAppStyle"```
