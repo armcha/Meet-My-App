@@ -1,9 +1,11 @@
 package com.luseen.meetmyapp;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.luseen.introlib.BaseIntroActivity;
@@ -26,6 +28,7 @@ public class MainActivity extends BaseIntroActivity implements FragmentChangeLis
         setDoneText("DONE");
         showSkipButton(true);
         setFragmentChangeListener(this);
+        setParallaxEnabled(true);
     }
 
     @Override
@@ -35,6 +38,6 @@ public class MainActivity extends BaseIntroActivity implements FragmentChangeLis
 
     @Override
     public void onSlideChange(int position) {
-        Log.e("onSlideChange ", " " + position);
+        Log.d("onSlideChange ", " " + position);
     }
 }

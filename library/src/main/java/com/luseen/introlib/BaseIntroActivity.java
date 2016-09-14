@@ -140,7 +140,11 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) bottomView.getLayoutParams();
-            params.setMargins(0, 0, 0, Utils.getNavBarWidth(this));
+            if (Utils.isInPortraitMode(this)) {
+                params.setMargins(0, 0, 0, Utils.getNavBarWidth(this));
+            } else {
+                params.setMargins(0, 0, Utils.getNavBarWidth(this), 0);
+            }
             bottomView.setLayoutParams(params);
         }
 

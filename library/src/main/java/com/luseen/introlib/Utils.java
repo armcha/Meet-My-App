@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.PorterDuff;
@@ -14,6 +15,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPropertyAnimatorListenerAdapter;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -113,5 +115,10 @@ class Utils {
                 e.printStackTrace();
             }
         }
+    }
+
+    static boolean isInPortraitMode(Activity activity) {
+        int orientation = activity.getResources().getConfiguration().orientation;
+        return Configuration.ORIENTATION_PORTRAIT == orientation;
     }
 }
