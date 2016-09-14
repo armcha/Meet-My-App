@@ -28,7 +28,7 @@ import java.util.Vector;
  */
 public abstract class BaseIntroActivity extends AppCompatActivity {
 
-    public static final int DEFAULT_ANIMATION_DURATION = 200;
+    static final int DEFAULT_ANIMATION_DURATION = 200;
 
     private final float SELECTED_SCALE = 1.3f;
 
@@ -184,7 +184,7 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.view_pager);
         viewPager.setAdapter(this.mPagerAdapter);
         if (isParallaxEnabled)
-            viewPager.setPageTransformer(false, new ParallaxPageTransformer());
+            viewPager.setPageTransformer(true, new ParallaxPageTransformer());
         viewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
@@ -271,16 +271,16 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
         currentSelectedItem = index;
     }
 
-    public abstract void init(@Nullable Bundle savedInstanceState);
+    protected abstract void init(@Nullable Bundle savedInstanceState);
 
-    public abstract void onDonePressed();
+    protected abstract void onDonePressed();
 
-    public void addFragment(@NonNull FragmentItem fragmentItem) {
+    protected void addFragment(@NonNull FragmentItem fragmentItem) {
         fragments.add(IntroFragment.newInstance(fragmentItem.getFragmentLayout()));
         backgroundColors.add(fragmentItem.getBackgroundColor());
     }
 
-    public void showSkipButton(boolean showButton) {
+    protected void showSkipButton(boolean showButton) {
         this.isSkipShown = showButton;
         if (showButton) {
             skipTextView.setVisibility(View.VISIBLE);
@@ -290,31 +290,32 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
         skipTextView.postInvalidate();
     }
 
-    public void setVibrate(boolean vibrate) {
+    protected void setVibrate(boolean vibrate) {
         this.isVibrateOn = vibrate;
     }
 
-    public void setVibrateIntensity(int intensity) {
+    protected void setVibrateIntensity(int intensity) {
         this.vibrateIntensity = intensity;
     }
 
-    public void setSkipText(String skipText) {
+    protected void setSkipText(String skipText) {
         skipTextView.setText(skipText);
     }
 
-    public void setNextImage(int nextImage) {
+    protected void setNextImage(int nextImage) {
         nextImageView.setImageResource(nextImage);
     }
 
-    public void setDoneText(String doneText) {
+    protected void setDoneText(String doneText) {
         doneTextView.setText(doneText);
     }
 
-    public void setParallaxEnabled(boolean parallaxEnabled) {
+    //Experimental
+    private void setParallaxEnabled(boolean parallaxEnabled) {
         isParallaxEnabled = parallaxEnabled;
     }
 
-    public void setFragmentChangeListener(FragmentChangeListener fragmentChangeListener) {
+    protected void setFragmentChangeListener(FragmentChangeListener fragmentChangeListener) {
         this.fragmentChangeListener = fragmentChangeListener;
     }
 }

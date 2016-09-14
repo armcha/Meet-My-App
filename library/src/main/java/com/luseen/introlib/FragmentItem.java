@@ -22,11 +22,11 @@ public class FragmentItem {
         this.backgroundColor = backgroundColor;
     }
 
-    public int getFragmentLayout() {
+    int getFragmentLayout() {
         return fragmentLayout;
     }
 
-    public int getBackgroundColor() {
+    int getBackgroundColor() {
         return backgroundColor;
     }
 }

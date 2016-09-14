@@ -28,7 +28,6 @@ public class MainActivity extends BaseIntroActivity implements FragmentChangeLis
         setDoneText("DONE");
         showSkipButton(true);
         setFragmentChangeListener(this);
-        setParallaxEnabled(true);
     }
 
     @Override
