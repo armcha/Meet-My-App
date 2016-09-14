@@ -25,9 +25,9 @@ Maven:
 </dependency>
 ```
 
-I am so lazy to add description, sorry :smile: :scream:
+I'm too lazy to add description :smile: :scream:
 
-Please anyone if you have time add description  :joy: see [sample][1] here 
+If anyone has free time to add description, please add it. joy: see [sample][1] here 
 [1]: https://github.com/armcha/Meet-My-App/tree/master/app/src/main
 
 Set your activity style ```android:theme="@style/MeetMyAppStyle"```
@@ -59,6 +59,6 @@ public class MainActivity extends BaseIntroActivity{
 }
 ```
 
-Your layout should not contain background attribute
+Your layout wouldn't contain background attribute!
 
 
