@@ -121,4 +121,9 @@ class Utils {
         int orientation = activity.getResources().getConfiguration().orientation;
         return Configuration.ORIENTATION_PORTRAIT == orientation;
     }
+
+    static boolean hasNavBar(Context context) {
+        int id = context.getResources().getIdentifier("config_showNavigationBar", "bool", "android");
+        return id > 0 && context.getResources().getBoolean(id);
+    }
 }

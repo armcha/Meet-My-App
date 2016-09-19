@@ -13,14 +13,14 @@
 
 Gradle:
 ```groovy
-compile 'com.github.armcha:MeetMyApp:0.3.2'
+compile 'com.github.armcha:MeetMyApp:0.3.3'
 ```
 Maven:
 ```xml
 <dependency>
   <groupId>com.github.armcha</groupId>
   <artifactId>MeetMyApp</artifactId>
-  <version>0.3.2</version>
+  <version>0.3.3</version>
   <type>pom</type>
 </dependency>
 ```

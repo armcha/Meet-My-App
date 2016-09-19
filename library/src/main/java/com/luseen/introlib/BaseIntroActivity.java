@@ -138,7 +138,7 @@ public abstract class BaseIntroActivity extends AppCompatActivity {
         RelativeLayout bottomView = (RelativeLayout) findViewById(R.id.bottom_view);
         mVibrator = (Vibrator) this.getSystemService(VIBRATOR_SERVICE);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && Utils.hasNavBar(this)) {
             RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) bottomView.getLayoutParams();
             if (Utils.isInPortraitMode(this)) {
                 params.setMargins(0, 0, 0, Utils.getNavBarWidth(this));
